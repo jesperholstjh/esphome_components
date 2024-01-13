@@ -13,9 +13,9 @@ select:
     modbus_controller_id: genvex_modbus_controller
     name: "Genvex speed mode"
     id: genvex_speed_mode    
-    address: 4x0100
+    address: 0x0000
     options:
-      - "0"
+      - "Off"
       - "1"
       - "2"
       - "3"
@@ -61,7 +61,7 @@ sensor:
     device_class: temperature
     value_type: U_WORD
     register_type: read
-    address: 0
+    address: 3x0000
     lambda: |-
       ESP_LOGD("T1", "Processing T1 using lambda");
       return ((x - 300) / 10);
