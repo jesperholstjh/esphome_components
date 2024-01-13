@@ -13,7 +13,7 @@ select:
     modbus_controller_id: genvex_modbus_controller
     name: "Genvex speed mode"
     id: genvex_speed_mode    
-    address: 0x0000
+    address: 4x0100
     options:
       - "Off"
       - "1"
