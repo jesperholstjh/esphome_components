@@ -15,7 +15,7 @@ select:
     id: genvex_speed_mode    
     address: 4x0100
     options:
-      - "Off"
+      - "0"
       - "1"
       - "2"
       - "3"
