@@ -61,7 +61,7 @@ sensor:
     device_class: temperature
     value_type: U_WORD
     register_type: read
-    address: 3x0000
+    address: 0
     lambda: |-
       ESP_LOGD("T1", "Processing T1 using lambda");
       return ((x - 300) / 10);
