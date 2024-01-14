@@ -18,4 +18,4 @@ sensor:
     unit_of_measurement: "%"
     value_type: U_WORD
     register_type: read
-    address: 0x66
+    address: 258
