@@ -14,11 +14,11 @@ sensor:
     modbus_controller_id: genvex_modbus_controller
     name: "Genvex Controller Version"
     id: genvex_controller_version
-    address: 0x0200  # Modbus register 3x0200, prefix '3x' is usually omitted in the address
+    address: 0x0200
     value_type: U_WORD
     register_type: read
     unit_of_measurement: ""
     accuracy_decimals: 1
     icon: mdi:information-outline
     lambda: |-
-      return x * 0.1;  # Since 1 unit is equal to 0.1 in the actual value
+      return x * 0.1;
