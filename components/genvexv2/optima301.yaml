@@ -22,6 +22,3 @@ sensor:
     icon: mdi:information-outline
     lambda: |-
       return x * 0.1;  # Since 1 unit is equal to 0.1 in the actual value
-
-  - platform: status
-    name: "Genvex Controller Status"
