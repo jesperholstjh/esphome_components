@@ -33,6 +33,102 @@ If you do so Genvex 10V and your USB device will be connected and properly just 
 
 ### Yaml configuration
 
+
+
+
+
+Working Example of yaml file for Genvex Premium Preheat using <em>optima301.yaml</em>
+
+```
+
+esphome:
+  name: genvex
+  friendly_name: Genvex
+  on_boot: 
+    - priority: 600
+      then: 
+      - output.turn_on: pin16_high
+      - output.turn_on: pin17_high
+      - output.turn_on: pin19_high
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "xxx"
+
+ota:
+  password: "xxx"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Genvex Fallback Hotspot"
+    password: "xxx"
+
+captive_portal:
+
+output:
+  - platform: gpio
+    pin: 16
+    id: pin16_high
+   
+  - platform: gpio
+    pin: 17
+    id: pin17_high
+   
+  - platform: gpio
+    pin: 19
+    id: pin19_high
+
+
+packages:
+  remote_package:
+    url: https://github.com/jesperholstjh/esphome_components
+    ref: main
+    files: [components/genvexv2/optima301.yaml]
+    refresh: 0s
+
+uart:
+  - id: uart_genvex
+    rx_pin: 21
+    tx_pin: 22
+    #rx_pin: GPIO16
+    #tx_pin: GPIO17
+    parity: EVEN
+    baud_rate: 19200
+    stop_bits: 1
+  
+modbus:
+    - id: genvex_modbus
+      uart_id: uart_genvex
+ 
+modbus_controller:
+  id: genvex_modbus_controller
+  address: 1
+  modbus_id: genvex_modbus
+  update_interval: 60s
+  command_throttle: 10ms
+```
+
+
+
+
+
+
+
+
+
 Example of yaml file for Genvex ECO180 using <em>optima260.yaml</em>
 ```
 esphome:
@@ -93,3 +189,6 @@ modbus_controller:
   update_interval: 60s
   command_throttle: 10ms
 ```
+
+
+
