@@ -19,3 +19,18 @@ sensor:
     value_type: U_WORD
     register_type: read
     address: 258
+    
+  - platform: modbus_controller
+    modbus_controller_id: genvex_modbus_controller
+    name: "Genvex temp t4"
+    id: genvex_temp_t4
+    unit_of_measurement: °C
+    accuracy_decimals: 1
+    device_class: temperature
+    value_type: U_WORD
+    register_type: read
+    address: 3
+    lambda: |-
+      ESP_LOGD("T4", "Processing T4 using lambda");
+      return ((x - 300) / 10);
+      
