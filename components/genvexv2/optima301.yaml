@@ -39,6 +39,21 @@ select:
   #     - "9"
 
 sensor:
+  - platform: modbus_controller
+    modbus_controller_id: genvex_modbus_controller
+    name: "Programme Version"
+    id: programme_version
+    unit_of_measurement: "Version"
+    accuracy_decimals: 1
+    device_class: version
+    value_type: U_WORD
+    register_type: read
+    address: 0x0200
+    lambda: |-
+      ESP_LOGD("Programme Version", "Raw value: %d", x);
+      return (x * 0.1);
+      
+sensor:
   - platform: template
     name: "Genvex Efficiency"
     icon: mdi:air-filter
