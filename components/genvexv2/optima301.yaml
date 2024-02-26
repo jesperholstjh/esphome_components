@@ -51,7 +51,7 @@ sensor:
     address: 0x0108
     lambda: |- 
       ESP_LOGD("Inlet Fan RPM", "Raw value: %d", x);
-      return x;  # since the value is already in RPM, no conversion is needed
+      return x;
       
 sensor:
   - platform: template
