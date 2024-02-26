@@ -41,21 +41,6 @@ select:
 sensor:
   - platform: modbus_controller
     modbus_controller_id: genvex_modbus_controller
-    name: "Temperature"
-    id: temperature
-    unit_of_measurement: "°C"
-    accuracy_decimals: 1
-    device_class: temperature
-    value_type: U_WORD
-    register_type: holding
-    address: 0x0000
-    lambda: |- 
-      ESP_LOGD("Temperature", "Raw value: %d", x);
-      return ((x - 1000) * 0.1);  # Apply the offset and resolution
-
-sensor:
-  - platform: modbus_controller
-    modbus_controller_id: genvex_modbus_controller
     name: "Inlet Fan RPM"
     id: inlet_fan_rpm
     unit_of_measurement: "RPM"
