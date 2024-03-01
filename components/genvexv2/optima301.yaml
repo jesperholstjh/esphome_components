@@ -219,7 +219,7 @@ number:
     min_value: 10
     max_value: 30
     step: 0.1
-    address: 2
+    address: 0
     register_type: holding
     value_type: U_WORD
     lambda: "return ((x+100)/10);"
