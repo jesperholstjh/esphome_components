@@ -23,6 +23,24 @@ switch:
         return 0;  // Sluk for kølingen
       }
 
+number:
+  - platform: modbus_controller
+    modbus_controller_id: genvex_modbus_controller
+    name: "Genvex Cooling Temperature Setpoint"
+    address: 1
+    min_value: 30.0
+    max_value: 100.0
+    step: 0.1
+    mode: slider  
+    lambda: |-  
+      return (x * 0.1) + 3.0;  
+    on_value:
+      then:
+        - modbus_controller.write:
+            id: genvex_modbus_controller
+            address: 1
+            value: !lambda 'return (x - 3.0) / 0.1;' 
+
 sensor:
 
 # This template calculates the efficiency of the Genvex ventilation system by comparing 
