@@ -15,14 +15,13 @@ switch:
     name: "Genvex Cooling"
     address: 2
     register_type: holding
-    bit_mask: 0x01
+    bitmask: 0x01
     lambda: |-
       if (x) {
         return 1;  // Tænd for kølingen
       } else {
         return 0;  // Sluk for kølingen
       }
-
 
 sensor:
 
