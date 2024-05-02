@@ -40,7 +40,7 @@ number:
     lambda: "return (x / 10.0);"  # Opdateret for at dele direkte med 10
     write_lambda: |-
       ESP_LOGD("Genvex Cooling Temp", "Processing new cooling temperature");
-      uint16_t new_temp = x * 10;  # Omskriver input grader til Modbus værdi
+      uint16_t new_temp = x * 10;  // Omskriver input grader til Modbus værdi
       ESP_LOGD("Genvex Cooling Temp", "New value %d", new_temp);
       return new_temp;
 
