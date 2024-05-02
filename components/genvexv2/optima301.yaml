@@ -37,10 +37,10 @@ number:
     address: 1  # Registeraddressen for køletemperatur
     register_type: holding
     value_type: U_WORD
-    lambda: "return ((x * 0.1) + 3.0);"
+    lambda: "return (x / 10.0);"  # Opdateret for at dele direkte med 10
     write_lambda: |-
       ESP_LOGD("Genvex Cooling Temp", "Processing new cooling temperature");
-      uint16_t new_temp = (x - 3.0) * 10;
+      uint16_t new_temp = x * 10;  # Omskriver input grader til Modbus værdi
       ESP_LOGD("Genvex Cooling Temp", "New value %d", new_temp);
       return new_temp;
 
