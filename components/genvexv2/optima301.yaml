@@ -30,17 +30,18 @@ number:
     id: genvex_cooling_temp
     device_class: temperature
     icon: mdi:thermometer
-    unit_of_measurement: °C
-    min_value: 30
-    max_value: 100
+    unit_of_measurement: "°C"
+    min_value: 3.0  # Minimumsværdi i grader Celsius, ikke i tiendedele grader
+    max_value: 10.0  # Maksimumsværdi i grader Celsius, ikke i tiendedele grader
     step: 0.1
-    address: 1  # Registeraddressen for køletemperatur
+    address: 1  # Registeradresse for køletemperatur
     register_type: holding
     value_type: U_WORD
-    lambda: "return (x / 10.0);"  # Opdateret for at dele direkte med 10
+    lambda: |-
+      return (x / 10.0) - 10;
     write_lambda: |-
       ESP_LOGD("Genvex Cooling Temp", "Processing new cooling temperature");
-      uint16_t new_temp = x * 10;  // Omskriver input grader til Modbus værdi
+      uint16_t new_temp = (x + 10) * 10;
       ESP_LOGD("Genvex Cooling Temp", "New value %d", new_temp);
       return new_temp;
 
