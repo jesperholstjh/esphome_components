@@ -8,6 +8,18 @@ external_components:
 
 genvexv2:
 
+
+switch:
+  - platform: modbus_controller
+    modbus_controller_id: genvex_modbus_controller
+    name: "Genvex Cooling"
+    address: 2
+    write_type: holding
+    bitmask: 0x01
+    command_on: 0x01
+    command_off: 0x00
+
+
 sensor:
 
 # This template calculates the efficiency of the Genvex ventilation system by comparing 
@@ -89,3 +101,4 @@ sensor:
     lambda: |-
       ESP_LOGD("T7", "Processing T7 using lambda");
       return ((x - 300) / 10);
+
