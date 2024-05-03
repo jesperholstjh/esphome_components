@@ -44,7 +44,6 @@ number:
       ESP_LOGD("Genvex Cooling Temp", "New value %d", new_temp);
       return new_temp;
 
-number:
   - platform: modbus_controller
     modbus_controller_id: genvex_modbus_controller
     name: "Genvex Desired Temperature"
