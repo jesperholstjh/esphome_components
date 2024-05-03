@@ -18,25 +18,25 @@ select:
     register_count: 1
     value_type: U_WORD
     optionsmap:
-      "0": "Off"
-      "1": "S1"
-      "2": "S2"
-      "3": "S3"
-      "4": "S4"
+      0: "Off"
+      1: "S1"
+      2: "S2"
+      3: "S3"
+      4: "S4"
     lambda: |-
       if (x == 0) return "Off";
       if (x == 1) return "S1";
       if (x == 2) return "S2";
       if (x == 3) return "S3";
       if (x == 4) return "S4";
-      return ""; 
+      return "";
     write_lambda: |-
       if (x == "Off") return 0;
       if (x == "S1") return 1;
       if (x == "S2") return 2;
       if (x == "S3") return 3;
       if (x == "S4") return 4;
-      return 0; 
+      return 0;
 
 
 switch:
