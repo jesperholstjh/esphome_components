@@ -57,13 +57,13 @@ number:
     address: 0  # Registeradressen for ønsket temperatur
     register_type: holding
     value_type: U_WORD
-    lambda: |-
-      return ((x - 1000) / 10.0);
+    lambda: "return ((x+100)/10);"
     write_lambda: |-
       ESP_LOGD("Genvex Desired Temp", "Processing new desired temperature");
-      uint16_t new_temp = (x * 10.0) + 1000; 
+      uint16_t new_temp = x * 10 - 100;
       ESP_LOGD("Genvex Desired Temp", "New value %d", new_temp);
       return new_temp;
+      
 
 sensor:
 
