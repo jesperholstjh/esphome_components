@@ -15,7 +15,7 @@ select:
     name: "Genvex Panel Fan Mode Speed"
     id: genvex_panel_fan_mode
     address: 100
-    register_count: 1  # Antager at det kun påvirker et enkelt register
+    register_count: 1
     value_type: U_WORD
     optionsmap:
       "0": "Off"
@@ -29,14 +29,15 @@ select:
       if (x == 2) return "S2";
       if (x == 3) return "S3";
       if (x == 4) return "S4";
-      return "";
+      return ""; 
     write_lambda: |-
       if (x == "Off") return 0;
       if (x == "S1") return 1;
       if (x == "S2") return 2;
       if (x == "S3") return 3;
       if (x == "S4") return 4;
-      return 0;
+      return 0; 
+
 
 switch:
   - platform: modbus_controller
