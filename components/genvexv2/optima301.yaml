@@ -29,14 +29,14 @@ select:
       if (x == 2) return "S2";
       if (x == 3) return "S3";
       if (x == 4) return "S4";
-      return "";
+      return "";  # Default for unrecognized value
     write_lambda: |-
       if (x == "Off") return 0;
       if (x == "S1") return 1;
       if (x == "S2") return 2;
       if (x == "S3") return 3;
       if (x == "S4") return 4;
-      return 0;
+      return 0;  # Default for error state
 
 
 switch:
