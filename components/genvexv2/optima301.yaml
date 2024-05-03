@@ -9,6 +9,35 @@ external_components:
 genvexv2:
 
 
+select:
+  - platform: modbus_controller
+    modbus_controller_id: genvex_modbus_controller
+    name: "Genvex Panel Fan Mode Speed"
+    id: genvex_panel_fan_mode
+    address: 100  # Modbus register address
+    register_type: holding
+    options:
+      - "Off"
+      - "S1"
+      - "S2"
+      - "S3"
+      - "S4"
+    lambda: |-
+      if (x == 0) return "Off";
+      if (x == 1) return "S1";
+      if (x == 2) return "S2";
+      if (x == 3) return "S3";
+      if (x == 4) return "S4";
+      return ""; 
+    write_lambda: |-
+      if (x == "Off") return 0;
+      if (x == "S1") return 1;
+      if (x == "S2") return 2;
+      if (x == "S3") return 3;
+      if (x == "S4") return 4;
+      return 0;
+      
+
 switch:
   - platform: modbus_controller
     modbus_controller_id: genvex_modbus_controller
