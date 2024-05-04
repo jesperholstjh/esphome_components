@@ -167,3 +167,23 @@ sensor:
     unit_of_measurement: "%"
     accuracy_decimals: 0
     value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: genvex_modbus_controller
+    name: "Inlet fan"
+    id: genvex_inlet_fan
+    address: 102
+    register_type: read
+    unit_of_measurement: "%"
+    accuracy_decimals: 0
+    value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: genvex_modbus_controller
+    name: "Extract fan"
+    id: genvex_extract_fan
+    address: 102
+    register_type: read
+    unit_of_measurement: "%"
+    accuracy_decimals: 0
+    value_type: U_WORD
