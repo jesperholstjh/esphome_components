@@ -150,7 +150,7 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: genvex_modbus_controller
-    name: "Genvex Bypass"
+    name: "Genvex Externt Bypass"
     id: genvex_bypass
     address: 104
     register_type: read
