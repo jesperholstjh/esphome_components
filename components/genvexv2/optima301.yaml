@@ -153,7 +153,7 @@ sensor:
     name: "Genvex Bypass"
     id: genvex_bypass
     address: 260
-    register_type: input
+    register_type: read
     unit_of_measurement: "%"
     accuracy_decimals: 0
     value_type: U_WORD
