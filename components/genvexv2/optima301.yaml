@@ -147,3 +147,15 @@ sensor:
       ESP_LOGD("T7", "Processing T7 using lambda");
       return ((x - 300) / 10);
 
+
+  - platform: modbus_controller
+    modbus_controller_id: genvex_modbus_controller
+    name: "Genvex Bypass"
+    id: genvex_bypass
+    address: 260  # Register 3x0104 konverteret til decimal
+    register_type: holding  # Brug 'holding' fordi 3x præfikset ofte refererer til holding registre, selvom det er markeret som read-only i dokumentationen
+    unit_of_measurement: "%"
+    accuracy_decimals: 0
+    value_type: U_WORD
+    filters:
+      - multiply: 0.1
