@@ -152,7 +152,7 @@ sensor:
     modbus_controller_id: genvex_modbus_controller
     name: "Genvex Bypass"
     id: genvex_bypass
-    address: 260
+    address: 104
     register_type: read
     unit_of_measurement: "%"
     accuracy_decimals: 0
