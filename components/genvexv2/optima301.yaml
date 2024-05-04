@@ -185,7 +185,7 @@ sensor:
     modbus_controller_id: genvex_modbus_controller
     name: "Extract fan"
     id: genvex_extract_fan
-    address: 102
+    address: 103
     register_type: read
     unit_of_measurement: "%"
     accuracy_decimals: 0
