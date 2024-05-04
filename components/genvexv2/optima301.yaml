@@ -157,6 +157,9 @@ sensor:
     unit_of_measurement: "%"
     accuracy_decimals: 0
     value_type: U_WORD
+    lambda: |-
+      ESP_LOGD("Bypass", "Raw Modbus value: %u", x);
+      return x;
 
   - platform: modbus_controller
     modbus_controller_id: genvex_modbus_controller
