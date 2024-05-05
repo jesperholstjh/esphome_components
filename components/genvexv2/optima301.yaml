@@ -50,14 +50,9 @@ number:
     step: 0.1
     value_type: U_WORD
     lambda: |-
-      // Konverterer register værdien til temperatur
-      return (x - 1500) * 0.1;
-    write_lambda: |-
-      // Konverterer temperaturen tilbage til register værdi
-      if (x < -15.0 || x > 0.0) {
-        return {};  // Returnerer en tom valgfri, hvis værdien er uden for gyldige grænser
-      }
-      return static_cast<uint16_t>((x * 10.0) + 1500);
+      // Omregner fra register værdi til temperatur
+      float temperature = (x / 10.0) - 15.0;
+      return temperature;
       
 
   - platform: modbus_controller
