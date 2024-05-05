@@ -53,6 +53,13 @@ number:
       // Omregner fra register værdi til temperatur
       float temperature = (x / 10.0) - 15.0;
       return temperature;
+    write_lambda: |-
+      // Konverterer temperaturen tilbage til register værdi
+      if (x < -15.0 || x > 0.0) {
+        return {};  // Returnerer en tom valgfri, hvis værdien er uden for gyldige grænser
+      }
+      uint16_t raw_value = static_cast<uint16_t>((x + 15.0) * 10);
+      return raw_value;
       
 
   - platform: modbus_controller
