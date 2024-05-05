@@ -38,6 +38,26 @@ switch:
       }
 
 number:
+
+  - platform: modbus_controller
+    modbus_controller_id: genvex_modbus_controller
+    name: "Genvex Preheat Temperature"
+    id: genvex_preheat_temp
+    address: 17
+    register_type: holding
+    min_value: -15.0
+    max_value: 0.0
+    step: 0.1
+    value_type: U_WORD
+    lambda: |-
+      return (x - 1500) * 0.1;
+    write_lambda: |-
+      if (x < -15.0 || x > 0.0) {
+        return {};
+      }
+      return static_cast<uint16_t>((x * 10.0) + 1500);
+      
+
   - platform: modbus_controller
     modbus_controller_id: genvex_modbus_controller
     name: "Genvex Cooling Temperature Setpoint"
