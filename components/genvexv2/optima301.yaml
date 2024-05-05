@@ -50,12 +50,14 @@ number:
     step: 0.1
     value_type: U_WORD
     lambda: |-
-      return (x - 1400) * 0.1; // Justerer basis til 1400 for at matche -2°C forventning
+      // Konverterer register værdien til temperatur
+      return (x - 1500) * 0.1;
     write_lambda: |-
+      // Konverterer temperaturen tilbage til register værdi
       if (x < -15.0 || x > 0.0) {
-        return {};
+        return {};  // Returnerer en tom valgfri, hvis værdien er uden for gyldige grænser
       }
-      return static_cast<uint16_t>((x * 10.0) + 1400);
+      return static_cast<uint16_t>((x * 10.0) + 1500);
       
 
   - platform: modbus_controller
