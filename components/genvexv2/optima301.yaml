@@ -190,3 +190,15 @@ sensor:
     unit_of_measurement: "%"
     accuracy_decimals: 0
     value_type: U_WORD
+
+  - platform: modbus_controller
+    modbus_controller_id: genvex_modbus_controller
+    name: "Genvex Programme Version Controller"
+    id: genvex_prog_ver_ctrl
+    address: 200
+    accuracy_decimals: 1
+    value_type: U_WORD
+    register_type: read
+    lambda: |-
+      ESP_LOGD("Programme Version Controller", "Raw Modbus value: %u", x);
+      return x * 0.1;
