@@ -221,7 +221,6 @@ sensor:
     name: "Modbus Version"
     id: modbus_version
     address: 204
-    unit_of_measurement: "Version"
     accuracy_decimals: 1
     value_type: U_WORD
     register_type: read
