@@ -271,7 +271,7 @@ binary_sensor:
     name: "System Start/Stop Status"
     id: system_start_stop_status
     address: 1 
-    input_type: discrete_input
+    register_type: read
     lambda: |-
       return x == 1;
 
