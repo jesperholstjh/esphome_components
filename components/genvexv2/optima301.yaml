@@ -50,12 +50,12 @@ number:
     step: 0.1
     value_type: U_WORD
     lambda: |-
-      return (x - 1500) * 0.1;
+      return (x - 1400) * 0.1; // Justerer basis til 1400 for at matche -2°C forventning
     write_lambda: |-
       if (x < -15.0 || x > 0.0) {
         return {};
       }
-      return static_cast<uint16_t>((x * 10.0) + 1500);
+      return static_cast<uint16_t>((x * 10.0) + 1400);
       
 
   - platform: modbus_controller
