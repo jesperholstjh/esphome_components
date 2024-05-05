@@ -265,3 +265,13 @@ sensor:
     lambda: |-
       return x * 0.1;
 
+binary_sensor:
+  - platform: modbus_controller
+    modbus_controller_id: genvex_modbus_controller
+    name: "System Start/Stop Status"
+    id: system_start_stop_status
+    address: 1 
+    input_type: discrete_input
+    lambda: |-
+      return x == 1;
+
