@@ -290,7 +290,7 @@ binary_sensor:
     name: "Filter Error"
     lambda: |-
       uint16_t alarmcode = (uint16_t)(id(genvex_alarm_bitfield).state);
-      bool bActive = alarmcode & 0x0002;  # Bit 1 er sat hvis der er en filterfejl
+      bool bActive = alarmcode & 0x0002;
       return bActive;
     filters:
       - delayed_on: 500ms  # Forsink aktivering for at undgå falske positiver
