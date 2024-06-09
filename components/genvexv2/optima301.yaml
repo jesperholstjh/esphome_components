@@ -111,9 +111,13 @@ sensor:
     modbus_controller_id: genvex_modbus_controller
     name: "Genvex Alarm Bitfield"
     id: genvex_alarm_bitfield
-    address: 0x0101  # Registeradressen for alarmer
-    register_type: input  # Sørg for, at vi læser fra input register
+    register_type: read
+    address: 15  # Registeradressen for alarmer
     value_type: U_WORD
+    lambda: |-
+      uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
+      ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
+      return int_mode;
 
 
 
