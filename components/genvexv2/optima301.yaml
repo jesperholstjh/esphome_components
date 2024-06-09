@@ -105,6 +105,17 @@ number:
 
 sensor:
 
+
+  - platform: modbus_controller
+    modbus_controller_id: genvex_modbus_controller
+    name: "Genvex Alarm Bitfield"
+    id: genvex_alarm_bitfield
+    address: 0x0101  # Registeradressen for alarmer
+    register_type: read
+    value_type: U_WORD
+
+
+
 # This template calculates the efficiency of the Genvex ventilation system by comparing 
 # the inlet temperature (T1), outdoor temperature (T3), and extract temperature (T7). 
 # Efficiency is calculated as a percentage using the formula:
@@ -275,3 +286,12 @@ binary_sensor:
     lambda: |-
       return x == 1;
 
+  - platform: template
+    name: "Filter Error"
+    lambda: |-
+      uint16_t alarmcode = (uint16_t)(id(genvex_alarm_bitfield).state);
+      bool bActive = alarmcode & 0x0002;  # Bit 1 er sat hvis der er en filterfejl
+      return bActive;
+    filters:
+      - delayed_on: 500ms  # Forsink aktivering for at undgå falske positiver
+      - delayed_off: 500ms  # Forsink deaktivering for at undgå falske negativer
