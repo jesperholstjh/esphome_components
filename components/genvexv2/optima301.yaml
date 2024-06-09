@@ -106,12 +106,13 @@ number:
 sensor:
 
 
+sensor:
   - platform: modbus_controller
     modbus_controller_id: genvex_modbus_controller
     name: "Genvex Alarm Bitfield"
     id: genvex_alarm_bitfield
     address: 0x0101  # Registeradressen for alarmer
-    register_type: read
+    register_type: input  # Sørg for, at vi læser fra input register
     value_type: U_WORD
 
 
