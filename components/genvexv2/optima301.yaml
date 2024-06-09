@@ -110,7 +110,7 @@ sensor:
     name: "Genvex Alarm Bitfield"
     id: genvex_alarm_bitfield
     register_type: read
-    address: 15  # Registeradressen for alarmer
+    address: 101
     value_type: U_WORD
     lambda: |-
       uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
