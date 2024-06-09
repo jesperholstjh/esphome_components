@@ -103,8 +103,6 @@ number:
       return new_temp;
       
 
-sensor:
-
 
 sensor:
   - platform: modbus_controller
